@@ -1,0 +1,31 @@
+---
+output:
+  html_notebook: default
+  html_document: default
+---
+name: "My Website"
+title: "Accounting Data Analytics"
+description: |
+  Accounting Data Analytics
+output_dir: "docs"
+navbar:
+  logo:
+    image: AA.jpg
+  search: true
+  right:
+    - text: "Home"
+      href: index.html
+    - text: "About"
+      href: about.html
+    - text: "Logic"
+      href: Logic.html
+    - text: "Modules"
+      menu:
+        - text: "RMarkdown"
+          href: It's a trap! R-Squared is flawed!.nb.html
+        - text: "Machine Learning"
+          href: Linear Data Package.nb.html
+        - text: "Forest Fires"
+          href: Forest Fires.nb.html
+output: distill::distill_article
+theme: "theme.css"
