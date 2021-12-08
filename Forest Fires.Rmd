@@ -1,0 +1,81 @@
+---
+title: "Forest Fires in Portugal"
+output:
+  html_notebook: default
+  html_document:
+    df_print: paged
+---
+
+1. This information includes data regarding forest fires in the Northeast region of Portugal. The data uses meteorological and other data with the hopes of finding trends to better prepare for forest fires in this region.  This information was taken from the UCI repository https://archive.ics.uci.edu/ml/datasets/forest+fires. 
+
+2.Simply looking at the summary statistics and the data file suggests skewed information regarding the FFMC numbers since the median is much closer to the max value than the minimal. The minimum value of 18.7 appears to be an outlier and graphing the data confirms that the data is skewed left. 
+
+3.Through the machine learning, we are trying to predict Homoscedacity to see if the variance of the dependent variable is the same for all of the data.  
+
+4.We have plotted this data to better understand the results and split parts of the data amongst itself. 
+
+5. Weather prediction is one of the most difficult areas to study, but that does not mean that we should not test it. It may be naive to expect to create a model which can predict forest fires, but the relationship of the 91.60 median and mean 90.64 FFMC show strong trends in the data for better decision making. This information can be used to help potential homeowners in Northeast Portugal better evaluate a region from an FFMC perspective before signing a new mortgage, 
+
+```{r}
+library(tidyverse)
+library(caret)
+```
+
+
+
+```{r}
+summary(forestfires)
+```
+
+Running this code below simply verifies that there are in fact 517 observations and 13 variables which match up to the data documentation for the dataset (12 predictors plus an area outcome).
+
+```{r}
+# Number of data cases and variables
+dim(forestfires)
+```
+The FFMC stands for Fine Fuel Moisture Code and is a calculation of the potential fuel moisture of forest litter which increases the chance of forest fires. In short, the higher the FFMC rating, the drier the climate thus the more susceptable that region is to forest fires...which we are trying to prevent!
+```{r}
+par(mfrow=c(1,2),mar=c(5, 4.25, 5.5, 2))
+d <- density(forestfires$FFMC)
+plot(d,main="FFMC Density (original)",xlab="FFMC index", col='tomato', lwd=3)
+forestfires$FFMC<- (forestfires$FFMC^3)
+d <- density(forestfires$FFMC)
+plot(d,main="FFMC Density (x^3)",xlab="FFMC index", col='tomato', lwd=3)
+```
+
+Since the data is skewed, we can normalize it with the below code. 
+
+```{r}
+par(mfrow=c(1,2),mar=c(5, 4.25, 5.5, 2))
+d <- density(forestfires$FFMC)
+plot(d,main="FFMC Density (original)",xlab="FFMC index", col='tomato', lwd=3)
+forestfires$FFMC<- (forestfires$FFMC^3)
+d <- density(forestfires$FFMC)
+plot(d,main="FFMC Density (x^3)",xlab="FFMC index", col='tomato', lwd=3)
+```
+
+```{r}
+assumptionsmodel <- lm(area ~ ., data=forestfires)
+lmtest::bptest(assumptionsmodel)
+par(mfrow=c(2,2))
+plot(assumptionsmodel)
+```
+
+Simple linear regression can show the output below, but one must be careful with R-Squared since the data is skewed, but still shows a strong correlation between FFMC values and forest fires. 
+```{r}
+model1 <- lm(area ~ ., data=forestfires)
+outcome1 <- summary(model1)
+(round(outcome1$coefficients[ , c(2,4)],3))
+# Find which variables are significant
+sig.pred <- row.names(outcome1$coefficients)[which(outcome1$coefficients[ ,4] <= 0.05)]
+rsquare <- round(summary(model1)$r.squared,3)
+print(paste("The R2 value is ",rsquare))
+```
+
+
+
+
+
+
+
+
