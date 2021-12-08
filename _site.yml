@@ -1,10 +1,5 @@
----
-output:
-  html_notebook: default
-  html_document: default
----
 name: "My Website"
-title: "Accounting Data Analytics"
+title: "Kieran Mullarkey"
 description: |
   Accounting Data Analytics
 output_dir: "docs"
@@ -17,15 +12,13 @@ navbar:
       href: index.html
     - text: "About"
       href: about.html
-    - text: "Logic"
-      href: Logic.html
-    - text: "Modules"
+    - text: "Projects"
       menu:
-        - text: "RMarkdown"
+        - text: "R-Squared"
           href: It's a trap! R-Squared is flawed!.nb.html
-        - text: "Machine Learning"
-          href: Linear Data Package.nb.html
         - text: "Forest Fires"
           href: Forest Fires.nb.html
+        - text: "Machine Learning"
+          href: Linear Data Package.nb.html
 output: distill::distill_article
 theme: "theme.css"
