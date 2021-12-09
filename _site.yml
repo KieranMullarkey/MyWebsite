@@ -18,6 +18,7 @@ navbar:
           href: It's a trap! R-Squared is flawed!.nb.html
         - text: "Forest Fires"
           href: Forest Fires.nb.html
-        - text: "Linear Charts"
-          href: Linear Charts.nb.html
+        - text: "Linear Chart Patterns"
+          href: Linear Chart Patterns.nb.html
+source_url: https://github.com/Professor-Hunt/mywebsite
 output: distill::distill_article
