@@ -1,0 +1,25 @@
+name: "."
+title: "Kieran's Page"
+description: |
+  Kieran's Website - Hope this works. 
+output_dir: "docs"
+base_url: https://github.com/KieranMullarkey/MyWebsite 
+navbar:
+  logo:
+    image: AA.jpg
+  right:
+    - text: "Home"
+      href: index.html
+    - text: "Resume"
+      href: Resume.html
+    - text: "Projects"
+      menu:
+        -text: "R-Squared"
+          href: It's a trap! R-Squared is flawed!.nb.html
+        - text: "Forest Fires"
+          href: Forest Fires.nb.html
+        - text: "Linear Chart Patterns"
+          href: Linear Chart Patterns.nb.html
+  source_url: https://github.com/Professor-Hunt/mywebsite
+output: distill::distill_article
+theme: "theme.css"
