@@ -1,0 +1,16 @@
+---
+title: "Linear Charts"
+author: "Kieran Mullarkey"
+output:
+  html_document: default
+  html_notebook: default
+---
+
+After downloading the applicable data set, we can review the data between the petals and sepals of the flowers within the data set. The line of code --GGally::ggpairs(iris)-- includes graphs, statistical outputs, and box plots in an easy to run package. You can run this for other data sets by changing the link in the parentheses after --ggpairs--. This function works best with paired data.
+
+In fund accounting, this plot could quickly compare two mutual funds where one uses an unleveraged strategy verses one which uses a leveraged strategy while both funds hold virtually the same type of assets. If both funds are held under the same administrator, the comparison from this data could assist in deciding which fund is assigned certain allocations.
+
+```{r}
+GGally::ggpairs(iris)
+```
+
