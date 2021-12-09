@@ -18,6 +18,6 @@ navbar:
           href: It's a trap! R-Squared is flawed!.nb.html
         - text: "Forest Fires"
           href: Forest Fires.nb.html
-        - text: "Linear Data Package"
-          href: Linear Data Package.nb.html
+        - text: "Linear Charts"
+          href: Linear Charts.nb.html
 output: distill::distill_article
